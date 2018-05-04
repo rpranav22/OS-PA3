@@ -17,7 +17,7 @@ def sync(socket):
 
 def Main():
     host = '127.0.0.2'
-    port = 5001
+    port = 5000
 
     s = socket.socket()
     s.connect(('127.0.0.1', port))
@@ -28,6 +28,7 @@ def Main():
 
     message = input("-> ")
     while message != 'q':
+        s.send(message.encode())
         if str(message) == "sync":
             sync(s)
         data = s.recv(1024)
