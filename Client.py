@@ -1,10 +1,22 @@
 import socket
 
+# import pyPdf
+
+
 
 class Node:
     def __init__(self, data):
         self.data = data
 
+def getPDFContent(path):
+    content = ""
+    num_pages = 1
+    p = open(path, "rb")
+    pdf = pyPdf.pdf.PdfFileReader(p)
+    for i in range(0, num_pages):
+        content += pdf.getPage(i).extractText() + "\n"
+    content = " ".join(content.replace(u"\xa0", " ").strip().split())
+    return content
 
 def send_filename(filename, sock):
     for ch in filename:
@@ -13,10 +25,12 @@ def send_filename(filename, sock):
 
 def send_fileData(filename, sock):
     dir = 'Files/'
+    # text = getPDFContent(dir + filename)
+    # send_filename(text)
     fp = open(dir + filename, 'rb')
     fp_data = fp.read(1)
     while fp_data:
-        print(fp_data)
+        # print(fp_data)
         sock.send(fp_data)
         fp_data = fp.read(1)
     sock.send('$'.encode())
@@ -31,12 +45,13 @@ def sync(sock):
     send_fileData(filename, sock)
     ack = sock.recv(1024)
     print(ack.decode())
+    print("synced both files")
 
 
 
 def Main():
     host = '127.0.0.2'
-    port = 5000
+    port = 5001
 
     s = socket.socket()
     s.connect(('127.0.0.1', port))
@@ -50,8 +65,8 @@ def Main():
         s.send(message.encode())
         if str(message) == "sync":
             sync(s)
-        data = s.recv(1024)
-        print (str(data))
+        # data = s.recv(1024)
+        # print (str(data))
         message = input("-> ")
     s.close()
 

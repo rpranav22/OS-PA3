@@ -21,8 +21,8 @@ def receive(c):
         data = c.recv(1)
         while data:
             if data.decode() == '$':
-                print("Data received from client: " + str(fulltext))
-                msg = "This is in response to {0}.".format(fulltext.decode())
+                print("Data received from client: " + fulltext.decode())
+                msg = "This is in response to: \n{0}.".format(fulltext.decode())
                 c.send(msg.encode())
                 return fulltext.decode()
             fulltext += data
@@ -40,7 +40,7 @@ def receive(c):
 
 def Main():
     host = '127.0.0.1'
-    port = 5000
+    port = 5001
 
 
     nodeData=[]
