@@ -17,15 +17,24 @@ class DataNodes:
 
 def receive(c):
     while True:
+        fulltext = b''
+        data = c.recv(1)
+        while data:
+            if data.decode() == '$':
+                print("Data received from client: " + str(fulltext))
+                msg = "This is in response to {0}.".format(fulltext.decode())
+                c.send(msg.encode())
+                return fulltext.decode()
+            fulltext += data
 
-        data = c.recv(1024)
+            data = c.recv(1)
         if not data:
             break
         print ("Data received from client: " + str(data))
         msg="This is in response to {0}.".format(data.decode())
 
-        print ("Sending: " + msg)
-        c.send(msg.encode())
+        print ("Sending(shouldn't be): " + msg)
+        # c.send(msg.encode())
     c.close()
 
 
@@ -51,9 +60,14 @@ def Main():
         print("Input", cmd.decode())
         if cmd.decode() == "sync":
             print("Entering sync")
-            receive(c)
+            filename = receive(c)
+            print("filename: ", filename)
+            file_data = receive(c)
+            print("file data: ", file_data)
         elif cmd.decode() == "quit":
             break
+        print("Taking next input...")
+        cmd = c.recv(4)
 
 
     c.close()

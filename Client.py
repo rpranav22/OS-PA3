@@ -5,14 +5,33 @@ class Node:
     def __init__(self, data):
         self.data = data
 
-def sync(socket):
-    print("syncing")
-    fp = open('Files/test.txt', 'rb')
-    fp_data = fp.read(1024)
+
+def send_filename(filename, sock):
+    for ch in filename:
+        sock.send(ch.encode())
+    sock.send('$'.encode())
+
+def send_fileData(filename, sock):
+    dir = 'Files/'
+    fp = open(dir + filename, 'rb')
+    fp_data = fp.read(1)
     while fp_data:
         print(fp_data)
-        socket.send(fp_data)
-        fp_data = fp.read(1024)
+        sock.send(fp_data)
+        fp_data = fp.read(1)
+    sock.send('$'.encode())
+
+def sync(sock):
+    print("syncing")
+    # dir = 'Files/'
+    filename = 'test.txt'
+    send_filename(filename, sock)
+    ack = sock.recv(1024)
+    print(ack.decode())
+    send_fileData(filename, sock)
+    ack = sock.recv(1024)
+    print(ack.decode())
+
 
 
 def Main():
