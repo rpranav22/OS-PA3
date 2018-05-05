@@ -72,7 +72,7 @@ def sync(sock):
     sock.send(num.encode())
     for filename in files:
         send_filename(filename, sock)
-        ack = sock.recv(1024)
+        ack = sock.recv(36)
         print(ack.decode())
         send_fileData(filename, sock)
         ack = sock.recv(36)
