@@ -45,7 +45,7 @@ def sync(sock):
     send_fileData(filename, sock)
     ack = sock.recv(1024)
     print(ack.decode())
-    print("synced both files")
+    # print("synced both files")
 
 
 
@@ -65,8 +65,8 @@ def Main():
         s.send(message.encode())
         if str(message) == "sync":
             sync(s)
-        # data = s.recv(1024)
-        # print (str(data))
+        data = s.recv(1024)
+        print (data.decode())
         message = input("-> ")
     s.close()
 

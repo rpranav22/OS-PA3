@@ -20,8 +20,6 @@ def Main():
     host = '127.0.0.1'
     port = 5007
 
-
-    nodeData=[]
     index =0
 
     s = socket.socket()
@@ -30,26 +28,12 @@ def Main():
     s.listen(5)
     c, addr = s.accept()
     print ("Connection from: " + str(addr) + " at index " + str(index + 1))
-    d = c.recv(1024)
-    print(d)
-    data = "received"
-    c.send(data.encode())
-    # client = Clients([1,2],)
+    while True:
+        d = c.recv(1024)
+        print("Data received: ", d.decode())
+        data = "The data has been stored."
+        c.send(data.encode())
 
-
-
-
-    # c.send('Talk, CS, Workshop, Economics, History, Fest, Sport, Environment')
-    '''while True:
-
-        data = c.recv(1024)
-        if not data:
-            break
-        print ("Request received from client: " + str(data))
-        msg="This is in response to {0}.".format(data.decode)
-
-        print ("Sending: " + msg)
-        c.send(msg)'''
     c.close()
 
 if __name__ == '__main__':

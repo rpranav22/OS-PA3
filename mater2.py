@@ -42,7 +42,7 @@ def receive(c):
 
 def checknode(f):
     f = f.split('.')
-    print f
+    print (f)
     if f[1] == 'pdf':
         return 0
     elif f[1] == 'mp3':
