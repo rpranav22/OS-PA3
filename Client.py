@@ -28,12 +28,19 @@ def send_fileData(filename, sock):
     # text = getPDFContent(dir + filename)
     # send_filename(text)
     fp = open(dir + filename, 'rb')
-    fp_data = fp.read(1)
-    while fp_data:
-        # print(fp_data)
-        sock.send(fp_data)
-        fp_data = fp.read(1)
-    sock.send('$'.encode())
+    fp_data = fp.read()
+    data_length = len(fp_data)
+    print("Data Length: ", data_length)
+    sock.send(str(data_length).encode())
+    ack = sock.recv(24)
+    print("Acknowledgement: ", ack)
+    print("fpData: ", fp_data)
+    sock.send(fp_data)
+    # while fp_data:
+    #     # print(fp_data)
+    #     sock.send(fp_data)
+    #     fp_data = fp.read(1)
+    # sock.send('$'.encode())
 
 def sync(sock):
     print("syncing")
@@ -51,16 +58,16 @@ def sync(sock):
         send_filename(filename, sock)
         ack = sock.recv(1024)
         print(ack.decode())
-        # send_fileData(filename, sock)
-        # ack = sock.recv(1024)
-        # print(ack.decode())
+        send_fileData(filename, sock)
+        ack = sock.recv(1024)
+        print(ack.decode())
 
 
 
 
 def Main():
     host = '127.0.0.2'
-    port = 5001
+    port = 5000
 
     s = socket.socket()
     s.connect(('127.0.0.1', port))

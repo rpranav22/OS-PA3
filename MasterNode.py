@@ -83,7 +83,7 @@ def assign(filename):
 
 def Main():
     host = '127.0.0.1'
-    port = 5001
+    port = 5000
     # GOING TO STArt using SSH
     print("indexDict: ", indexdict)
 
@@ -108,10 +108,15 @@ def Main():
             for i in range(num):
                 filename = receive(c)
                 print("filename: ", filename)
-                assign(filename)
+                # assign(filename)
                 # print("Final index: ", indexdict)
+                data_length = c.recv(10)
+                print("Data Length: ", data_length.decode())
+                c.send("Received file data size.".encode())
+                file_data = c.recv(int(data_length.decode()))
                 # file_data = receive(c)
-                # print("file data: ", file_data)
+                print("file data: ", file_data)
+                c.send("Acknowledgement: Received file data.".encode())
                 print("_____________________________________________\n")
             c.send(b"Your data has been synced.")
         elif cmd.decode() == "quit":
