@@ -102,13 +102,18 @@ def Main():
         print("Input", cmd.decode())
         if cmd.decode() == "sync":
             print("Entering sync")
-            filename = receive(c)
-            print("filename: ", filename)
-            # assign(filename)
-            print("Final index: ", indexdict)
-            file_data = receive(c)
-            print("file data: ", file_data)
-            c.send("Your data has been synced.")
+            num = c.recv(3)
+            num = int(num.decode())
+            print("Number of Files: ", num)
+            for i in range(num):
+                filename = receive(c)
+                print("filename: ", filename)
+                assign(filename)
+                # print("Final index: ", indexdict)
+                # file_data = receive(c)
+                # print("file data: ", file_data)
+                print("_____________________________________________\n")
+            c.send(b"Your data has been synced.")
         elif cmd.decode() == "quit":
             break
         elif cmd.decode() == "qury":

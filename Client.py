@@ -39,13 +39,22 @@ def sync(sock):
     print("syncing")
     # dir = 'Files/'
     filename = 'test.txt'
-    send_filename(filename, sock)
-    ack = sock.recv(1024)
-    print(ack.decode())
-    send_fileData(filename, sock)
-    ack = sock.recv(1024)
-    print(ack.decode())
-    # print("synced both files")
+    files = ['test.txt', 'test1.txt', 'test3.txt', 'data.pdf', 'test.mp3']
+    num = len(files)
+    num = str(num)
+    print("Numfiles: ", num)
+    for i in range (3 - len(num)):
+        num = '0' + num
+    print("Final num: ", num)
+    sock.send(num.encode())
+    for filename in files:
+        send_filename(filename, sock)
+        ack = sock.recv(1024)
+        print(ack.decode())
+        # send_fileData(filename, sock)
+        # ack = sock.recv(1024)
+        # print(ack.decode())
+
 
 
 
@@ -66,6 +75,7 @@ def Main():
         if str(message) == "sync":
             sync(s)
         data = s.recv(1024)
+        print("_____________________________________\n")
         print (data.decode())
         message = input("-> ")
     s.close()

@@ -25,18 +25,15 @@ def Main():
     s = socket.socket()
     s.bind((host,port))
 
-    s.listen(5)
-    c, addr = s.accept()
-    print ("Connection from: " + str(addr) + " at index " + str(index + 1))
     while True:
+        s.listen(1)
+        c, addr = s.accept()
+        print("Connection from: " + str(addr) + " at index " + str(index + 1))
         d = c.recv(1024)
         print("Data received: ", d.decode())
         data = "The data has been stored."
         c.send(data.encode())
-    c.close()
-
-
-
+        c.close()
 
 if __name__ == '__main__':
     Main()
