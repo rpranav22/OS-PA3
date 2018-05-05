@@ -15,7 +15,8 @@ class DataNodes:
         self.name = name
         self.port = port
 
-
+files_list = []
+files_dict = {}
 def Main():
     host = '127.0.0.1'
     port = 5005
@@ -30,13 +31,24 @@ def Main():
         c, addr = s.accept()
         print("Connection from: " + str(addr) + " at index " + str(index + 1))
         d = c.recv(1024)
-        if(d == b"nothing"):
+        d = d.decode()
+        if(d == "nothing"):
             c.send(b"nothing")
             c.close()
             continue
-        print("Data received: ", d.decode())
-        data = "The data has been stored."
-        c.send(data.encode())
+        elif d[-1:] == "$":
+            print("Data received: ", d[:-1])
+            filename = d[:-1]
+            files_list.append(filename)
+            files_dict[filename] = "dummy data"
+            data = "The data has been stored."
+            c.send(data.encode())
+        elif d[-1:] == "#":
+            print("Query received: ", d[:-1])
+            filename = d[:-1]
+            data = files_dict[filename]
+            print("Queried data: ", data)
+            c.send(data.encode())
         c.close()
 
 if __name__ == '__main__':

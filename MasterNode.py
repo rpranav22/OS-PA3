@@ -91,14 +91,24 @@ def assign(filename):
     # print(nodes[index].port)
     if filename not in indexdict[nodes[index].name]:
         s.connect((data_host, nodes[index].port))
+        filename += "$"
         s.send(filename.encode())
-        update_dict(index, filename)
+        update_dict(index, filename[:-1])
     else:
         s.connect((data_host, nodes[index].port))
         s.send(b"nothing")
     a = s.recv(1024).decode()
     print(a)
     s.close()
+
+def retrieve(filename, index):
+    s = socket.socket()
+    s.connect((data_host, nodes[index].port))
+    filename += "#"
+    s.send(filename.encode())
+    data = s.recv(50)
+    s.close()
+    return data.decode()
 
 
 
@@ -153,6 +163,22 @@ def Main():
             print("sent: ", send)
         elif cmd == b"":
             break
+        elif cmd.decode() == "retr":
+            c.send(b"Enter the file you need: ")
+            query = c.recv(20)
+            print("Query: ", query.decode())
+            index = checknode(query.decode())
+            print("Corresponding dict: ", indexdict[nodes[index].name])
+            flag = query.decode() in indexdict[nodes[index].name]
+            print("search result: ", flag)
+            response = "{0}".format(str(flag))
+            if flag:
+                print("Truee")
+                data = retrieve(query.decode(), index)
+                final_data = ""
+                c.send(b"Response: " + data.encode())
+            else:
+                c.send(b"Response: " + response.encode())
 
 
         print("Taking next input...")

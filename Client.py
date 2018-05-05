@@ -102,6 +102,11 @@ def Main():
             sync(s)
         elif str(message) == "quit":
             break
+        elif str(message) == "retr":
+            req = s.recv(30)
+            print(req.decode())
+            query = input(req.decode())
+            s.send(query.encode())
         data = s.recv(100)
         print (data.decode())
         print("\n____________________________\nClosing connection.\n")
