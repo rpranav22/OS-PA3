@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="966c5561-f8b2-4e38-bbe8-079bbb668111" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/MasterNode.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,20 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MasterNode.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasterNode.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MasterNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="112" column="16" selection-start-line="112" selection-start-column="18" selection-end-line="113" selection-end-column="49" />
+            <state relative-caret-position="137">
+              <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+            <state relative-caret-position="481">
+              <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -106,11 +106,11 @@
         <option value="$PROJECT_DIR$/DataNode3.py" />
         <option value="$PROJECT_DIR$/Files/test1.txt" />
         <option value="$PROJECT_DIR$/Files/test3.txt" />
-        <option value="$PROJECT_DIR$/MasterNode.py" />
         <option value="$PROJECT_DIR$/DataNode2.py" />
         <option value="$PROJECT_DIR$/DataNode1.py" />
         <option value="$PROJECT_DIR$/Files/3bit.deb" />
         <option value="$PROJECT_DIR$/Client.py" />
+        <option value="$PROJECT_DIR$/MasterNode.py" />
       </list>
     </option>
   </component>
@@ -438,13 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterNode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="112" column="16" selection-start-line="112" selection-start-column="18" selection-end-line="113" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataNode3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -475,8 +468,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        <state relative-caret-position="481">
+          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterNode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
         </state>
       </provider>
     </entry>
