@@ -39,7 +39,7 @@ def sync(sock):
     print("syncing")
     # dir = 'Files/'
     filename = 'test.txt'
-    files = ['test.txt', 'test1.txt', 'test3.txt', 'data.pdf', 'test.mp3']
+    files = ['test.txt'] #, 'test1.txt', 'test3.txt', 'data.pdf', 'test.mp3']
     num = len(files)
     num = str(num)
     print("Numfiles: ", num)
@@ -64,10 +64,8 @@ def Main():
 
     s = socket.socket()
     s.connect(('127.0.0.1', port))
-    # s.send(data)
     conn = s.recv(1024)
     print(conn.decode())
-    # s.send({"Data": data})
 
     message = input("-> ")
     while message != 'q':
