@@ -84,7 +84,7 @@ def assign(filename):
 def Main():
     host = '127.0.0.1'
     port = 5001
-
+    # GOING TO STArt using SSH
     print("indexDict: ", indexdict)
 
     index =0
