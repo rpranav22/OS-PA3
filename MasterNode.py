@@ -48,6 +48,16 @@ def receive(c):
         print ("Sending(shouldn't be): " + msg)
         # c.send(msg.encode())
     c.close()
+def rec(c):
+    data_length = c.recv(20)
+    print("Data Length: ", data_length)
+    c.send("Received file data size.".encode())
+    file_data = c.recv(2 * int(data_length.decode()))
+    # file_data = receive(c)
+    print("file data: ", file_data)
+    c.send("Acknowledgement: Received file data.".encode())
+    return file_data.decode()
+
 
 def checknode(f):
     f = f.split('.')
@@ -61,20 +71,31 @@ def checknode(f):
     else:
         return 3
 
+def update_dict(index, filename):
+    if index == 0:
+        if filename not in indexdict['pdf']:
+            indexdict['pdf'].append(filename)
+    elif index == 1:
+        if filename not in indexdict['pdf']:
+            indexdict['mp3'].append(filename)
+    elif index == 2:
+        if filename not in indexdict['pdf']:
+            indexdict['txt'].append(filename)
+    else:
+        if filename not in indexdict['pdf']:
+            indexdict['other'].append(filename)
+
 def assign(filename):
     s = socket.socket()
     index = checknode(filename)
     # print(nodes[index].port)
-    s.connect((data_host, nodes[index].port))
-    s.send(filename.encode())
-    if index == 0:
-        indexdict['pdf'].append(filename)
-    elif index == 1:
-        indexdict['mp3'].append(filename)
-    elif index == 2:
-        indexdict['txt'].append(filename)
+    if filename not in indexdict[nodes[index].name]:
+        s.connect((data_host, nodes[index].port))
+        s.send(filename.encode())
+        update_dict(index, filename)
     else:
-        indexdict['other'].append(filename)
+        s.connect((data_host, nodes[index].port))
+        s.send(b"nothing")
     a = s.recv(1024).decode()
     print(a)
     s.close()
@@ -91,13 +112,21 @@ def Main():
     s = socket.socket()
     s.bind((host,port))
 
-    s.listen(5)
-    c, addr = s.accept()
-    print ("Connection from: " + str(addr) + " at index " + str(index + 1))
-    c.send("Connected successfully. Start Syncing now if necessary.".encode())
-    cmd = c.recv(4)
+    # s.listen(1)
+    # c, addr = s.accept()
+    # print ("Connection from: " + str(addr) + " at index " + str(index + 1))
+    # c.send("Connected successfully. Start Syncing now if necessary.".encode())
+    # cmd = c.recv(4)
     # print(cmd)
-    while cmd:
+    while True:
+        s.listen(1)
+        c, addr = s.accept()
+        print("Connection from: " + str(addr) + " at index " + str(index + 1))
+        c.send("Connected successfully. Start Syncing now if necessary.".encode())
+        cmd = c.recv(4)
+        # while cmd == b"":
+        #     cmd = c.recv(4)
+        print("cmd: ", cmd)
         # c.close()
         print("Input", cmd.decode())
         if cmd.decode() == "sync":
@@ -106,17 +135,14 @@ def Main():
             num = int(num.decode())
             print("Number of Files: ", num)
             for i in range(num):
-                filename = receive(c)
+                filename = rec(c)
                 print("filename: ", filename)
-                # assign(filename)
+                assign(filename)
                 # print("Final index: ", indexdict)
-                data_length = c.recv(10)
-                print("Data Length: ", data_length.decode())
-                c.send("Received file data size.".encode())
-                file_data = c.recv(int(data_length.decode()))
+                file_data = rec(c)
                 # file_data = receive(c)
                 print("file data: ", file_data)
-                c.send("Acknowledgement: Received file data.".encode())
+
                 print("_____________________________________________\n")
             c.send(b"Your data has been synced.")
         elif cmd.decode() == "quit":
@@ -125,17 +151,20 @@ def Main():
             send = str(indexdict)
             c.send(send.encode())
             print("sent: ", send)
+        elif cmd == b"":
+            break
 
 
         print("Taking next input...")
-        cmd = c.recv(4)
 
 
-    c.close()
+        # print("cmd: ", cmd)
+
+        c.close()
     # client = Clients([1,2],)
 
 
-
+    s.close()
 
     # c.send('Talk, CS, Workshop, Economics, History, Fest, Sport, Environment')
 

@@ -1,5 +1,5 @@
 import socket
-
+import time
 # import pyPdf
 
 
@@ -19,9 +19,20 @@ def getPDFContent(path):
     return content
 
 def send_filename(filename, sock):
-    for ch in filename:
-        sock.send(ch.encode())
-    sock.send('$'.encode())
+    data_length = str(len(filename.encode()))
+    print("Data Length: ", data_length)
+    if(len(data_length) >= 100):
+        for i in range(1000 - len(data_length)):
+            data_length = '0' + data_length
+    for i in range (20 - len(data_length)):
+        data_length = '0' + data_length
+
+
+    sock.send(str(data_length).encode())
+    ack = sock.recv(24)
+    print(ack)
+    sock.send(filename.encode())
+    # print("fpData: ", fp_data)
 
 def send_fileData(filename, sock):
     dir = 'Files/'
@@ -29,11 +40,16 @@ def send_fileData(filename, sock):
     # send_filename(text)
     fp = open(dir + filename, 'rb')
     fp_data = fp.read()
-    data_length = len(fp_data)
+    data_length = str(len(fp_data))
+    if (len(data_length) >= 100):
+        for i in range(1000 - len(data_length)):
+            data_length = '0' + data_length
+    for i in range(20 - len(data_length)):
+        data_length = '0' + data_length
     print("Data Length: ", data_length)
     sock.send(str(data_length).encode())
     ack = sock.recv(24)
-    print("Acknowledgement: ", ack)
+    print( ack)
     print("fpData: ", fp_data)
     sock.send(fp_data)
     # while fp_data:
@@ -46,7 +62,7 @@ def sync(sock):
     print("syncing")
     # dir = 'Files/'
     filename = 'test.txt'
-    files = ['test.txt'] #, 'test1.txt', 'test3.txt', 'data.pdf', 'test.mp3']
+    files = ['3bit.deb', 'test1.txt', 'test3.txt', 'test.txt']
     num = len(files)
     num = str(num)
     print("Numfiles: ", num)
@@ -59,8 +75,9 @@ def sync(sock):
         ack = sock.recv(1024)
         print(ack.decode())
         send_fileData(filename, sock)
-        ack = sock.recv(1024)
+        ack = sock.recv(36)
         print(ack.decode())
+        print("__________________________________________\n")
 
 
 
@@ -69,20 +86,28 @@ def Main():
     host = '127.0.0.2'
     port = 5000
 
-    s = socket.socket()
-    s.connect(('127.0.0.1', port))
-    conn = s.recv(1024)
-    print(conn.decode())
-
+    # s = socket.socket()
+    # s.connect(('127.0.0.1', port))
+    # conn = s.recv(60)
+    # print(conn.decode())
+    print("The server has started. Type sync to connect and get started.")
     message = input("-> ")
     while message != 'q':
+        s = socket.socket()
+        s.connect(('127.0.0.1', port))
+        conn = s.recv(60)
+        print(conn.decode())
         s.send(message.encode())
         if str(message) == "sync":
             sync(s)
-        data = s.recv(1024)
-        print("_____________________________________\n")
+        elif str(message) == "quit":
+            break
+        data = s.recv(100)
         print (data.decode())
+        print("\n____________________________\nClosing connection.\n")
+        s.close()
         message = input("-> ")
+        # time.sleep(5)
     s.close()
 
 if __name__ == '__main__':

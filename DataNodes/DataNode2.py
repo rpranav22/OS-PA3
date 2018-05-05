@@ -30,6 +30,10 @@ def Main():
         c, addr = s.accept()
         print("Connection from: " + str(addr) + " at index " + str(index + 1))
         d = c.recv(1024)
+        if(d == b"nothing"):
+            c.send(b"nothing")
+            c.close()
+            continue
         print("Data received: ", d.decode())
         data = "The data has been stored."
         c.send(data.encode())
