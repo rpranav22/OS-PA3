@@ -1,4 +1,6 @@
 import socket
+import os
+import struct
 import time
 # import pyPdf
 
@@ -8,30 +10,23 @@ class Node:
     def __init__(self, data):
         self.data = data
 
-def getPDFContent(path):
-    content = ""
-    num_pages = 1
-    p = open(path, "rb")
-    pdf = pyPdf.pdf.PdfFileReader(p)
-    for i in range(0, num_pages):
-        content += pdf.getPage(i).extractText() + "\n"
-    content = " ".join(content.replace(u"\xa0", " ").strip().split())
-    return content
-
 def send_filename(filename, sock):
     data_length = str(len(filename.encode()))
     print("Data Length: ", data_length)
-    if(len(data_length) >= 100):
-        for i in range(1000 - len(data_length)):
-            data_length = '0' + data_length
+    length_pad = data_length
     for i in range (20 - len(data_length)):
-        data_length = '0' + data_length
+        length_pad = '0' + data_length
+
+    msg = struct.pack('>I', int(length_pad)) + filename.encode()
+    print("Message: ", msg)
+    print("Message length: ", len(msg))
+
+    # sock.send(str(length_pad).encode())
+    # ack = sock.recv(24)
+    # print(ack)
+    sock.sendall(msg)
 
 
-    sock.send(str(data_length).encode())
-    ack = sock.recv(24)
-    print(ack)
-    sock.send(filename.encode())
     # print("fpData: ", fp_data)
 
 def send_fileData(filename, sock):
@@ -40,18 +35,23 @@ def send_fileData(filename, sock):
     # send_filename(text)
     fp = open(dir + filename, 'rb')
     fp_data = fp.read()
-    data_length = str(len(fp_data))
-    if (len(data_length) >= 100):
-        for i in range(1000 - len(data_length)):
-            data_length = '0' + data_length
+    data_length = str(os.path.getsize(dir+filename))
+    length_pad = data_length
     for i in range(20 - len(data_length)):
         data_length = '0' + data_length
     print("Data Length: ", data_length)
-    sock.send(str(data_length).encode())
-    ack = sock.recv(24)
-    print( ack)
+    print("OS Data Length: ", data_length)
+    msg = struct.pack('>I', int(length_pad)) + fp_data
+
+    # sock.send(str(data_length).encode())
+    # ack = sock.recv(24)
+    # print(ack)
+    print("Message: ", msg)
+    print("Message length: ", msg)
     print("fpData: ", fp_data)
-    sock.send(fp_data)
+    data_chunk = 4096
+    # sock.send(fp_data)
+    sock.sendall(msg)
     # while fp_data:
     #     # print(fp_data)
     #     sock.send(fp_data)
@@ -62,7 +62,7 @@ def sync(sock):
     print("syncing")
     # dir = 'Files/'
     filename = 'test.txt'
-    files = ['3bit.deb', 'test1.txt', 'test3.txt', 'test.txt']
+    files = ['frame.png', 'test1.txt', 'test3.txt', 'test.txt', 'data.pdf', 'new.mp3']
     num = len(files)
     num = str(num)
     print("Numfiles: ", num)
@@ -107,7 +107,7 @@ def Main():
             print(req.decode())
             query = input(req.decode())
             s.send(query.encode())
-        data = s.recv(100)
+        data = s.recv(1000)
         print (data.decode())
         print("\n____________________________\nClosing connection.\n")
         s.close()

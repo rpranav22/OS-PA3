@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import socket
 import datetime
+import struct
 import time
 
 
@@ -17,6 +18,40 @@ class DataNodes:
 
 files_list = []
 files_dict = {}
+
+def recv_msg(sock):
+    # Read message length and unpack it into an integer
+    raw_msglen = recvall(sock, 4)
+    if not raw_msglen:
+        return None
+    msglen = struct.unpack('>I', raw_msglen)[0]
+    print("Message length: ", msglen)
+    # Read the message data
+    return recvall(sock, msglen)
+
+def recvall(sock, n):
+    # Helper function to recv n bytes or return None if EOF is hit
+    print("n: ", n)
+    data = b''
+    while len(data) < n:
+        print("Data length in loop: ", len(data))
+        packet = sock.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+        print("Data length end loop: ", len(data))
+
+    print("Data extracted: ", data)
+    print("data length: ", len(data))
+    return data
+
+def writeFile(filename, data):
+    print("writing file")
+    dir = "DataNodes/data/"
+    fp = open(dir+filename, 'wb')
+    fp.write(data)
+    fp.close()
+
 def Main():
     host = '127.0.0.1'
     port = 5007
@@ -40,9 +75,13 @@ def Main():
             print("Data received: ", d[:-1])
             filename = d[:-1]
             files_list.append(filename)
-            files_dict[filename] = "dummy data"
             data = "The data has been stored."
             c.send(data.encode())
+            file_data = recv_msg(c)
+            writeFile(filename, file_data)
+            # files_dict[filename] = file_data.decode()
+            c.send("Acknowledgement: Received file data.".encode())
+            print("______________________________________\n")
         elif d[-1:] == "#":
             print("Query received: ", d[:-1])
             filename = d[:-1]

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import os
 import socket
 import datetime
+import struct
 import time
 
 
@@ -26,7 +28,13 @@ nodes = [DataNode1, DataNode2, DataNode3, DataNode4]
 indexdict = {'pdf': [], 'mp3':[], 'txt':[], 'other': []}
 filelist = ['data.pdf', 'data.mp3', 'data.txt']
 
-
+def write_file(file_data):
+    print("file data: ", file_data)
+    fp = open('recv1.mp3', "wb")
+    # file = b''
+    for file in str(file_data):
+        print(file)
+        fp.write(file.encode())
 def receive(c):
     while True:
         fulltext = b''
@@ -59,8 +67,40 @@ def rec(c):
     return file_data.decode()
 
 
+def recv_msg(sock):
+    # Read message length and unpack it into an integer
+    raw_msglen = recvall(sock, 4)
+    if not raw_msglen:
+        return None
+    msglen = struct.unpack('>I', raw_msglen)[0]
+    print("Message length: ", msglen)
+    # Read the message data
+    return recvall(sock, msglen)
+
+def recvall(sock, n):
+    # Helper function to recv n bytes or return None if EOF is hit
+    print("n: ", n)
+    data = b''
+    while len(data) < n:
+        print("Data length in loop: ", len(data))
+        packet = sock.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+        print("Data length end loop: ", len(data))
+
+    print("Data extracted: ", data)
+    print("data length: ", len(data))
+    return data
+
 def checknode(f):
-    f = f.split('.')
+    print("f: ", f)
+
+    try:
+        f = f.split('.')
+    except TypeError:
+        f = f.decode()
+        f = f.split('.')
     # print (f)
     if f[1] == 'pdf':
         return 0
@@ -76,16 +116,25 @@ def update_dict(index, filename):
         if filename not in indexdict['pdf']:
             indexdict['pdf'].append(filename)
     elif index == 1:
-        if filename not in indexdict['pdf']:
+        if filename not in indexdict['mp3']:
             indexdict['mp3'].append(filename)
     elif index == 2:
-        if filename not in indexdict['pdf']:
+        if filename not in indexdict['txt']:
             indexdict['txt'].append(filename)
     else:
-        if filename not in indexdict['pdf']:
+        if filename not in indexdict['other']:
             indexdict['other'].append(filename)
 
-def assign(filename):
+def sendFileData(fp_data, sock):
+    data_length = len(fp_data)
+    print("OS Data Length: ", data_length)
+    msg = struct.pack('>I', int(data_length)) + fp_data
+    print("Message: ", msg)
+    print("Message length: ", len(msg))
+    print("fpData: ", fp_data)
+    sock.sendall(msg)
+
+def assign(filename, file_data):
     s = socket.socket()
     index = checknode(filename)
     # print(nodes[index].port)
@@ -94,6 +143,10 @@ def assign(filename):
         filename += "$"
         s.send(filename.encode())
         update_dict(index, filename[:-1])
+        a = s.recv(40).decode()
+        print(a)
+        sendFileData(file_data, s)
+
     else:
         s.connect((data_host, nodes[index].port))
         s.send(b"nothing")
@@ -145,13 +198,19 @@ def Main():
             num = int(num.decode())
             print("Number of Files: ", num)
             for i in range(num):
-                filename = rec(c)
+                filename = recv_msg(c)
+                c.send("Acknowledgement: Received file data.".encode())
                 print("filename: ", filename)
-                assign(filename)
+                filename = filename.decode()
                 # print("Final index: ", indexdict)
-                file_data = rec(c)
+                file_data = recv_msg(c)
+                assign(filename, file_data)
+                c.send("Acknowledgement: Received file data.".encode())
                 # file_data = receive(c)
-                print("file data: ", file_data)
+
+
+                # print("File size after writing: ", os.path.getsize('recv1.pdf'))
+
 
                 print("_____________________________________________\n")
             c.send(b"Your data has been synced.")
