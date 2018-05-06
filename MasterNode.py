@@ -58,18 +58,18 @@ def recv_msg(sock):
 
 def recvall(sock, n):
     # Helper function to recv n bytes or return None if EOF is hit
-    print("n: ", n)
+    # print("n: ", n)
     data = b''
     while len(data) < n:
-        print("Data length in loop: ", len(data))
+        # print("Data length in loop: ", len(data))
         packet = sock.recv(n - len(data))
         if not packet:
             return None
         data += packet
-        print("Data length end loop: ", len(data))
+        # print("Data length end loop: ", len(data))
 
-    print("Data extracted: ", data)
-    print("data length: ", len(data))
+    # print("Data extracted: ", data)
+    # print("data length: ", len(data))
     return data
 
 def checknode(f):
@@ -137,9 +137,10 @@ def retrieve(filename, index):
     s.connect((data_host, nodes[index].port))
     filename += "#"
     s.send(filename.encode())
-    data = s.recv(50)
+    data = recv_msg(s)
+    print("Data received from DataNode.")
     s.close()
-    return data.decode()
+    return data
 
 
 
@@ -202,9 +203,13 @@ def Main():
                 print("Truee")
                 data = retrieve(query.decode(), index)
                 final_data = ""
-                c.send(b"Response: " + data.encode())
+                c.send(response.encode())
+                sendFileData(data, c)
             else:
-                c.send(b"Response: " + response.encode())
+                c.send(response.encode())
+
+            c.send("Retrieval over.".encode())
+            print("_____________________________________________\n")
 
 
         print("Taking next input...")

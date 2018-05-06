@@ -45,12 +45,28 @@ def recvall(sock, n):
     print("data length: ", len(data))
     return data
 
+def sendFileData(fp_data, sock):
+    dir = "data/"
+    data_length = len(fp_data)
+    print("OS Data Length: ", data_length)
+    msg = struct.pack('>I', int(data_length)) + fp_data
+    print("Message: ", msg)
+    print("Message length: ", len(msg))
+    print("fpData: ", fp_data)
+    sock.sendall(msg)
+
 def writeFile(filename, data):
     print("writing file")
     dir = "DataNodes/data/"
-    fp = open(dir+filename, 'wb')
+    fp = open(dir + filename, 'wb')
     fp.write(data)
     fp.close()
+
+def load_data(filename):
+    dir ="data/"
+    fp = open(dir + filename, "wb")
+    data = fp.read()
+    return data
 
 def Main():
     host = '127.0.0.1'
@@ -78,16 +94,20 @@ def Main():
             data = "The data has been stored."
             c.send(data.encode())
             file_data = recv_msg(c)
+            files_dict[filename] = file_data
             writeFile(filename, file_data)
-            # files_dict[filename] = file_data.decode()
             c.send("Acknowledgement: Received file data.".encode())
-            print("_________________________________________\n")
+            print("_____________________________________\n")
         elif d[-1:] == "#":
             print("Query received: ", d[:-1])
             filename = d[:-1]
-            data = files_dict[filename]
-            print("Queried data: ", data)
-            c.send(data.encode())
+            try:
+                data = load_data(filename)
+            except FileNotFoundError:
+                data = files_dict[filename]
+            sendFileData(data, c)
+            # print("Queried data: ", data)
+            # c.send(data.encode())
         c.close()
 
 if __name__ == '__main__':

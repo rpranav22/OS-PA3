@@ -22,6 +22,32 @@ def send_filename(filename, sock):
 
     sock.sendall(msg)
 
+def recv_msg(sock):
+    # Read message length and unpack it into an integer
+    raw_msglen = recvall(sock, 4)
+    if not raw_msglen:
+        return None
+    msglen = struct.unpack('>I', raw_msglen)[0]
+    # print("Message length: ", msglen)
+    # Read the message data
+    return recvall(sock, msglen)
+
+def recvall(sock, n):
+    # Helper function to recv n bytes or return None if EOF is hit
+    # print("n: ", n)
+    data = b''
+    while len(data) < n:
+        # print("Data length in loop: ", len(data))
+        packet = sock.recv(n - len(data))
+        if not packet:
+            return None
+        data += packet
+        # print("Data length end loop: ", len(data))
+
+    # print("Data extracted: ", data)
+    # print("data length: ", len(data))
+    return data
+
 
 def send_fileData(filename, sock):
     dir = 'Files/'
@@ -43,9 +69,10 @@ def send_fileData(filename, sock):
 
 def sync(sock):
     print("syncing")
-    # dir = 'Files/'
-    filename = 'test.txt'
-    files = ['frame.png', 'test1.txt', 'test3.txt', 'test.txt', 'data.pdf', 'new.mp3']
+    dir = 'Files/'
+    files = [f for f in os.listdir(dir) if os.path.isfile(os.path.join(dir, f))]
+    print("List of file in {0}: ".format(dir),str(files) )
+    # files = ['frame.png', 'test1.txt', 'test3.txt', 'test.txt', 'data.pdf', 'new.mp3']
     num = len(files)
     num = str(num)
     print("Numfiles: ", num)
@@ -87,6 +114,15 @@ def Main():
             print(req.decode())
             query = input(req.decode())
             s.send(query.encode())
+            res = s.recv(5)
+            print("Result: ", res)
+            if res.decode() == "True":
+                print("Downloading your file...")
+                file_data = recv_msg(s)
+                print("\n\nDownloaded size: ", len(file_data))
+            else:
+                res = s.recv(5)
+                print("Sorry, file could not be found in the server.")
         data = s.recv(1000)
         print (data.decode())
         print("\n____________________________\nClosing connection.\n")
