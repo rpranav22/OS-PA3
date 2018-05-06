@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="966c5561-f8b2-4e38-bbe8-079bbb668111" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="966c5561-f8b2-4e38-bbe8-079bbb668111" name="Default" comment="change client acknowledgement buffer size">
       <change beforePath="$PROJECT_DIR$/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodes/DataNode1.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodes/DataNode2.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodes/DataNode3.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataNodes/DataNode4.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MasterNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/MasterNode.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +28,8 @@
       <file leaf-file-name="Client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="64" column="84" selection-start-line="64" selection-start-column="84" selection-end-line="64" selection-end-column="84" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -42,22 +37,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mater2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mater2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-399">
-              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MasterNode.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MasterNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
               <folding>
-                <element signature="e#24#33#0" expanded="true" />
+                <element signature="e#25#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,10 +110,10 @@
         <option value="$PROJECT_DIR$/DataNode1.py" />
         <option value="$PROJECT_DIR$/Files/3bit.deb" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode1.py" />
-        <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode4.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode3.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode2.py" />
+        <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/MasterNode.py" />
       </list>
     </option>
@@ -354,10 +340,10 @@
       <window_info anchor="bottom" id="TODO" order="13" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50080776" side_tool="true" weight="0.32965517" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" sideWeight="0.49919224" visible="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49919224" weight="0.32965517" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.32965517" />
       <window_info anchor="bottom" id="Python Console" order="3" weight="0.32965517" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32965517" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.32965517" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4979424" visible="true" weight="0.24959612" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" />
@@ -389,7 +375,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -479,7 +465,7 @@
         <state relative-caret-position="372">
           <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#25#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -589,7 +575,7 @@
         <state relative-caret-position="1060">
           <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#25#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -683,16 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="64" column="84" selection-start-line="64" selection-start-column="84" selection-end-line="64" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataNodes/DataNode2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="677">
@@ -721,12 +697,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MasterNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#25#38#0" expanded="true" />
           </folding>
         </state>
       </provider>

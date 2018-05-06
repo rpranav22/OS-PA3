@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
+
 import socket
-import datetime
 import struct
-import time
+
 
 
 class Clients:
@@ -35,27 +34,7 @@ def write_file(file_data):
     for file in str(file_data):
         print(file)
         fp.write(file.encode())
-def receive(c):
-    while True:
-        fulltext = b''
-        data = c.recv(1)
-        while data:
-            if data.decode() == '$':
-                print("Data received from client: " + fulltext.decode())
-                msg = "This is in response to: \n{0}.".format(fulltext.decode())
-                c.send(msg.encode())
-                return fulltext.decode()
-            fulltext += data
 
-            data = c.recv(1)
-        if not data:
-            break
-        print ("Data received from client: " + str(data))
-        msg="This is in response to {0}.".format(data.decode())
-
-        print ("Sending(shouldn't be): " + msg)
-        # c.send(msg.encode())
-    c.close()
 def rec(c):
     data_length = c.recv(20)
     print("Data Length: ", data_length)
@@ -137,7 +116,6 @@ def sendFileData(fp_data, sock):
 def assign(filename, file_data):
     s = socket.socket()
     index = checknode(filename)
-    # print(nodes[index].port)
     if filename not in indexdict[nodes[index].name]:
         s.connect((data_host, nodes[index].port))
         filename += "$"
@@ -175,22 +153,15 @@ def Main():
     s = socket.socket()
     s.bind((host,port))
 
-    # s.listen(1)
-    # c, addr = s.accept()
-    # print ("Connection from: " + str(addr) + " at index " + str(index + 1))
-    # c.send("Connected successfully. Start Syncing now if necessary.".encode())
-    # cmd = c.recv(4)
-    # print(cmd)
+
     while True:
         s.listen(1)
         c, addr = s.accept()
         print("Connection from: " + str(addr) + " at index " + str(index + 1))
         c.send("Connected successfully. Start Syncing now if necessary.".encode())
         cmd = c.recv(4)
-        # while cmd == b"":
-        #     cmd = c.recv(4)
         print("cmd: ", cmd)
-        # c.close()
+
         print("Input", cmd.decode())
         if cmd.decode() == "sync":
             print("Entering sync")
@@ -202,14 +173,10 @@ def Main():
                 c.send("Acknowledgement: Received file data.".encode())
                 print("filename: ", filename)
                 filename = filename.decode()
-                # print("Final index: ", indexdict)
+
                 file_data = recv_msg(c)
                 assign(filename, file_data)
                 c.send("Acknowledgement: Received file data.".encode())
-                # file_data = receive(c)
-
-
-                # print("File size after writing: ", os.path.getsize('recv1.pdf'))
 
 
                 print("_____________________________________________\n")
@@ -243,15 +210,11 @@ def Main():
         print("Taking next input...")
 
 
-        # print("cmd: ", cmd)
-
         c.close()
-    # client = Clients([1,2],)
 
 
     s.close()
 
-    # c.send('Talk, CS, Workshop, Economics, History, Fest, Sport, Environment')
 
 
 if __name__ == '__main__':

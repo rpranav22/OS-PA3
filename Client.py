@@ -1,8 +1,7 @@
 import socket
 import os
 import struct
-import time
-# import pyPdf
+
 
 
 
@@ -21,18 +20,12 @@ def send_filename(filename, sock):
     print("Message: ", msg)
     print("Message length: ", len(msg))
 
-    # sock.send(str(length_pad).encode())
-    # ack = sock.recv(24)
-    # print(ack)
     sock.sendall(msg)
 
 
-    # print("fpData: ", fp_data)
-
 def send_fileData(filename, sock):
     dir = 'Files/'
-    # text = getPDFContent(dir + filename)
-    # send_filename(text)
+
     fp = open(dir + filename, 'rb')
     fp_data = fp.read()
     data_length = str(os.path.getsize(dir+filename))
@@ -43,20 +36,10 @@ def send_fileData(filename, sock):
     print("OS Data Length: ", data_length)
     msg = struct.pack('>I', int(length_pad)) + fp_data
 
-    # sock.send(str(data_length).encode())
-    # ack = sock.recv(24)
-    # print(ack)
     print("Message: ", msg)
     print("Message length: ", msg)
     print("fpData: ", fp_data)
-    data_chunk = 4096
-    # sock.send(fp_data)
     sock.sendall(msg)
-    # while fp_data:
-    #     # print(fp_data)
-    #     sock.send(fp_data)
-    #     fp_data = fp.read(1)
-    # sock.send('$'.encode())
 
 def sync(sock):
     print("syncing")
@@ -86,10 +69,7 @@ def Main():
     host = '127.0.0.2'
     port = 5000
 
-    # s = socket.socket()
-    # s.connect(('127.0.0.1', port))
-    # conn = s.recv(60)
-    # print(conn.decode())
+
     print("The server has started. Type sync to connect and get started.")
     message = input("-> ")
     while message != 'q':
