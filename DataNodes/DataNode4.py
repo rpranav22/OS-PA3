@@ -64,7 +64,8 @@ def writeFile(filename, data):
 
 def load_data(filename):
     dir ="data/"
-    fp = open(dir + filename, "wb")
+    fp = open(dir + filename, "rb")
+    print("location: " + dir + filename, type(fp))
     data = fp.read()
     return data
 
@@ -103,7 +104,7 @@ def Main():
             filename = d[:-1]
             try:
                 data = load_data(filename)
-            except FileNotFoundError:
+            except FileNotFoundError or TypeError:
                 data = files_dict[filename]
             sendFileData(data, c)
             # print("Queried data: ", data)

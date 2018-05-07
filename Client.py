@@ -1,6 +1,16 @@
 import socket
 import os
 import struct
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+
+class MyHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        print ("\nFile was modified in {}! Please sync again to update your files.\n".format(event))
+
+    def on_created(self, event):
+        print("\n{} was modified. Please sync again to update your files.\n".format(event.src_path))
 
 
 
@@ -90,9 +100,18 @@ def sync(sock):
         print("__________________________________________\n")
 
 
-
+def save_file(filename, data):
+    dir = "downloads/"
+    fp = open(dir+filename, 'wb')
+    fp.write(data)
+    print("\nSaved {} in downloads.\n".format(filename))
 
 def Main():
+    event_handler = MyHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path='Files/', recursive=False)
+    observer.start()
+
     host = '127.0.0.2'
     port = 5000
 
@@ -120,6 +139,15 @@ def Main():
                 print("Downloading your file...")
                 file_data = recv_msg(s)
                 print("\n\nDownloaded size: ", len(file_data))
+                while True:
+                    ch = input("Do you want to save it? (y/n) ")
+                    if ch.lower() == "y":
+                        save_file(query, file_data)
+                        break
+                    else:
+                        break
+
+
             else:
                 res = s.recv(5)
                 print("Sorry, file could not be found in the server.")
@@ -127,9 +155,11 @@ def Main():
         print (data.decode())
         print("\n____________________________\nClosing connection.\n")
         s.close()
-        message = input("-> ")
+        message = input("Enter command -> ")
         # time.sleep(5)
-    s.close()
+    # s.close()
+    observer.stop()
+    observer.join()
 
 if __name__ == '__main__':
     Main()

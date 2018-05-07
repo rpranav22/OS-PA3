@@ -64,7 +64,7 @@ def writeFile(filename, data):
 
 def load_data(filename):
     dir ="data/"
-    fp = open(dir + filename, "wb")
+    fp = open(dir + filename, "rb")
     data = fp.read()
     return data
 

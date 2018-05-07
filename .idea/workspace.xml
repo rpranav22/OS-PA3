@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="966c5561-f8b2-4e38-bbe8-079bbb668111" name="Default" comment="change client acknowledgement buffer size">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataNodes/DataNode1.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataNodes/DataNode2.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataNodes/DataNode3.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataNodes/DataNode4.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/DataNode4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/MasterNode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodes/data/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/data/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataNodes/data/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataNodes/data/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Files/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Files/test1.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,12 +21,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode3.coverage" NAME="DataNode3 Coverage Results" MODIFIED="1525645883921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$Client.coverage" NAME="Client Coverage Results" MODIFIED="1525645890654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode1.coverage" NAME="DataNode1 Coverage Results" MODIFIED="1525645881556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$MasterNode.coverage" NAME="MasterNode Coverage Results" MODIFIED="1525645888277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode2.coverage" NAME="DataNode2 Coverage Results" MODIFIED="1525645878898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode4.coverage" NAME="DataNode4 Coverage Results" MODIFIED="1525645885900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataNodes" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode3.coverage" NAME="DataNode3 Coverage Results" MODIFIED="1525717975215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$Client.coverage" NAME="Client Coverage Results" MODIFIED="1525717982558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode1.coverage" NAME="DataNode1 Coverage Results" MODIFIED="1525717973217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$MasterNode.coverage" NAME="MasterNode Coverage Results" MODIFIED="1525717980159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode2.coverage" NAME="DataNode2 Coverage Results" MODIFIED="1525717971156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab_Assignment_3$DataNode4.coverage" NAME="DataNode4 Coverage Results" MODIFIED="1525717977600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataNodes" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Lab Assignment 3" />
@@ -32,8 +36,8 @@
       <file leaf-file-name="Client.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="213">
+              <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -41,10 +45,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Files/test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test1.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Files/test1.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MasterNode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MasterNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-819">
+            <state relative-caret-position="108">
               <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
               <folding>
                 <element signature="e#25#38#0" expanded="true" />
@@ -56,8 +78,8 @@
       <file leaf-file-name="DataNode4.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataNodes/DataNode4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+            <state relative-caret-position="149">
+              <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -65,8 +87,8 @@
       <file leaf-file-name="DataNode3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataNodes/DataNode3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+            <state relative-caret-position="258">
+              <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -74,8 +96,8 @@
       <file leaf-file-name="DataNode1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataNodes/DataNode1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+            <state relative-caret-position="311">
+              <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -83,8 +105,8 @@
       <file leaf-file-name="DataNode2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataNodes/DataNode2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+            <state relative-caret-position="-355">
+              <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -110,19 +132,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Client2.py" />
-        <option value="$PROJECT_DIR$/Files/test.txt" />
         <option value="$PROJECT_DIR$/mater2.py" />
         <option value="$PROJECT_DIR$/DataNode3.py" />
-        <option value="$PROJECT_DIR$/Files/test1.txt" />
         <option value="$PROJECT_DIR$/Files/test3.txt" />
         <option value="$PROJECT_DIR$/DataNode2.py" />
         <option value="$PROJECT_DIR$/DataNode1.py" />
         <option value="$PROJECT_DIR$/Files/3bit.deb" />
+        <option value="$PROJECT_DIR$/MasterNode.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode4.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode3.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode1.py" />
         <option value="$PROJECT_DIR$/DataNodes/DataNode2.py" />
-        <option value="$PROJECT_DIR$/MasterNode.py" />
+        <option value="$PROJECT_DIR$/Files/test1.txt" />
+        <option value="$PROJECT_DIR$/Files/test.txt" />
         <option value="$PROJECT_DIR$/Client.py" />
       </list>
     </option>
@@ -164,6 +186,11 @@
               <item name="Lab Assignment 3" type="462c0819:PsiDirectoryNode" />
               <item name="DataNodes" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lab Assignment 3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lab Assignment 3" type="462c0819:PsiDirectoryNode" />
+              <item name="downloads" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lab Assignment 3" type="b2602c69:ProjectViewProjectNode" />
@@ -394,21 +421,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MasterNode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client2.py" />
-    <entry file="file://$PROJECT_DIR$/Files/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pyPdf/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -639,24 +651,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client2.py" />
-    <entry file="file://$PROJECT_DIR$/Files/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pyPdf/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="17" lean-forward="true" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Files/test1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -684,37 +682,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/DataNodes/data/frame.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/MasterNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-819">
+        <state relative-caret-position="108">
           <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding>
             <element signature="e#25#38#0" expanded="true" />
@@ -722,10 +695,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataNodes/DataNode2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-355">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/downloads/test.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/test1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/new.mp3">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1511" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="213">
+          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
