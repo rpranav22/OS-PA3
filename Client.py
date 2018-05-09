@@ -117,7 +117,8 @@ def Main():
 
 
     print("The server has started. Type sync to connect and get started.")
-    message = input("-> ")
+    # The four commands are sync, quit, qury and retr
+    message = input("Enter command -> ")
     while message != 'q':
         s = socket.socket()
         s.connect(('127.0.0.1', port))
